@@ -1,0 +1,10 @@
+{
+  "QueueConfigurations": [
+    {
+      "QueueArn": "{{queueArn}}",
+      "Events": [
+        "s3:ObjectCreated:*"
+      ]
+    }
+  ]
+}

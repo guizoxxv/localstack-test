@@ -19,10 +19,6 @@ aws --endpoint-url=http://127.0.0.1:4576 sqs list-queues
 # Get queue attributes and query ARN (Amazon Resource Name) value
 aws --endpoint-url=http://127.0.0.1:4576 sqs get-queue-attributes --queue-url http://localhost:4576/queue/myqueue --attribute-names All --output text --query 'Attributes.QueueArn'
 
-QUEUE_ARN=$(aws --endpoint-url=http://127.0.0.1:4576 sqs get-queue-attributes --queue-url http://localhost:4576/queue/myqueue --attribute-names All --output text --query 'Attributes.QueueArn')
-
-sed -i "s/{{queueArn}}/$QUEUE_ARN/g" notification.json
-
 # Copy local object to bucket
 aws --endpoint-url=http://127.0.0.1:4572 s3 cp sample.jpg s3://mybucket/
 
