@@ -5,6 +5,7 @@ services:
     environment:
       - DOCKER_HOST=unix:///var/run/docker.sock
       - SERVICES=s3,sqs
+      - DATA_DIR=/tmp/localstack/data
       # AWS
       - AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE
       - AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
@@ -15,4 +16,6 @@ services:
       - "4576:4576" # sqs
     volumes:
       - ./localstack/docker-entrypoint.sh:/docker-entrypoint-initaws.d/docker-entrypoint.sh
-      - ./localstack/s3:/root/s3
+      - ./localstack/data:/tmp/localstack/data
+      - ./localstack/config:/root/localstack/config
+      - ./localstack/s3:/root/localstack/s3
